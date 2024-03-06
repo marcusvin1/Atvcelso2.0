@@ -1,0 +1,49 @@
+﻿@model List<Atividade1.Convidado>
+
+<h2>Lista de Convidados</h2>
+
+<p>
+    <a asp-action="Create">Novo Convidado</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Confirmado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var convidado in Model)
+        {
+            <tr>
+                <td>@convidado.Id</td>
+                <td>@convidado.Nome</td>
+                <td>@convidado.EMail</td>
+                <td>@convidado.Telefone</td>
+                <td>
+                    @if (convidado.Comparecimento)
+                    {
+                        @if (convidado.Comparecimento)
+                        {
+                            <span>Sim</span>
+                        }
+                    }
+                    else
+                    {
+                        <span>Não Confirmado</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@convidado.Id">Detalhes</a> |
+                    <a asp-action="Edit" asp-route-id="@convidado.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@convidado.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
